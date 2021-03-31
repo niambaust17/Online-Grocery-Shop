@@ -18,7 +18,7 @@ const AddProduct = () =>
             imageURL: imageURL
         }
 
-        const url = `http://localhost:5050/addProduct`;
+        const url = `https://secret-spire-36842.herokuapp.com/addProduct`;
 
         fetch(url, {
             method: 'POST',

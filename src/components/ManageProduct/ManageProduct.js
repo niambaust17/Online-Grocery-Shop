@@ -7,7 +7,7 @@ const ManageProduct = () =>
 
     const fetchProducts = () =>
     {
-        fetch(`http://localhost:5050/products`)
+        fetch(`https://secret-spire-36842.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }
@@ -18,7 +18,7 @@ const ManageProduct = () =>
 
     const deleteProduct = id =>
     {
-        fetch(`http://localhost:5050/product/${ id }`, {
+        fetch(`https://secret-spire-36842.herokuapp.com/product/${ id }`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

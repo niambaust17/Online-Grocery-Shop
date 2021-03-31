@@ -15,6 +15,7 @@ import Admin from './components/Admin/Admin';
 import Deals from './components/Deals/Deals';
 import AddProduct from './components/AddProduct/AddProduct';
 import ManageProduct from './components/ManageProduct/ManageProduct';
+import Checkout from './components/Checkout/Checkout';
 
 export const UserContext = createContext();
 
@@ -43,6 +44,9 @@ function App()
           </PrivateRoute>
           <PrivateRoute path="/manageProduct">
             <ManageProduct />
+          </PrivateRoute>
+          <PrivateRoute path="/product/:id">
+            <Checkout />
           </PrivateRoute>
           <Route path="/login">
             <Login />

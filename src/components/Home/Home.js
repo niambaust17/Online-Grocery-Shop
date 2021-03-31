@@ -7,7 +7,7 @@ const Home = () =>
 
     useEffect(() =>
     {
-        fetch(`http://localhost:5050/products`)
+        fetch(`https://secret-spire-36842.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [products])
