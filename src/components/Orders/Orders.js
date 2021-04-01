@@ -20,7 +20,7 @@ const Orders = () =>
     }
 
     return (
-        <>
+        <div className="text-center">
             {
                 orders.length === 0 &&
                 <div className="spinner-border text-success" role="status">
@@ -51,7 +51,7 @@ const Orders = () =>
                     </tbody>
                 </table>
             </div>
-        </>
+        </div>
     );
 };
 

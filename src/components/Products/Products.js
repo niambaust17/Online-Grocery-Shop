@@ -1,4 +1,5 @@
 import React from 'react';
+import './Products.css';
 import { useHistory } from 'react-router';
 
 const Products = (props) =>
@@ -8,14 +9,17 @@ const Products = (props) =>
 
     return (
         <div className="col">
-            <div style={{ border: '1px solid orange', borderRadius: '10px', backgroundColor: '#d8e8e6' }}>
-                <img src={product.imageURL} alt="" className="card-img-top p-2" />
-                <p className="px-3"><strong>{product.name}</strong></p>
-                <h5 className="d-flex justify-content-between px-3"><span className="text-success">${product.price}</span>
+            <div className="card h-100">
+                <img src={product.imageURL} className="card-img-top" alt="..." />
+                <div className="card-body">
+                    <p className="card-title">{product.name}</p>
+                </div>
+                <div className="card-footer d-flex justify-content-between">
+                    <h4 className="text-success">${product.price}</h4>
                     <button onClick={() => history.push(`/product/${ product._id }`)} className="btn btn-outline-success btn-sm">
                         Buy Now
                     </button>
-                </h5>
+                </div>
             </div>
         </div>
     );

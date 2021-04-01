@@ -29,7 +29,7 @@ const ManageProduct = () =>
     }
 
     return (
-        <>
+        <div className="text-center">
             {
                 products.length === 0 &&
                 <div className="my-2">
@@ -67,7 +67,7 @@ const ManageProduct = () =>
                     </tbody>
                 </table>
             </div>
-        </>
+        </div>
     );
 };
 

@@ -7,7 +7,7 @@ const Header = () =>
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-md sticky-top navbar-light" style={{ backgroundColor: '#e2f2fd1a' }}>
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">ONLINE GROCERY SHOP</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,14 +28,14 @@ const Header = () =>
                                 <Link className="nav-link" to="/deals">Deals</Link>
                             </li>
                             {
-                                loggedInUser.isSignedIn &&
+                                loggedInUser?.isSignedIn &&
                                 <>
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/">{loggedInUser.displayName}</Link>
                                     </li>
                                 </>
                             }
-                            <li className="nav-item mx-3">
+                            <li className="nav-item">
                                 {loggedInUser.isSignedIn ? <Link className="nav-link btn btn-outline-warning" to="/" onClick={() => setLoggedInUser({})}>Logout</Link> : <Link className="nav-link btn btn-outline-success" to="/login">Login</Link>}
                             </li>
                         </ul>

@@ -10,10 +10,10 @@ const Home = () =>
         fetch(`https://secret-spire-36842.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [products])
+    }, [])
 
     return (
-        <>
+        <div className="text-center">
             {
                 products.length === 0 &&
                 <div className="spinner-border text-success" role="status">
@@ -27,7 +27,7 @@ const Home = () =>
                     }
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
