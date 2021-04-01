@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { UserContext } from '../../App';
 
 const Checkout = () =>
 {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const history = useHistory();
     let { id } = useParams();
     const [product, setProduct] = useState([])
 
@@ -30,7 +31,16 @@ const Checkout = () =>
             },
             body: JSON.stringify(orderDetail)
         })
-            .then(res => console.log('server side', res));
+            .then(res => res.json())
+            .then(data =>
+            {
+                if (data)
+                {
+                    alert('Your order placed successfully');
+                    history.push("/home");
+                }
+            })
+
     }
 
     return (

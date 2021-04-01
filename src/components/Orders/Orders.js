@@ -8,16 +8,10 @@ const Orders = () =>
 
     useEffect(() =>
     {
-        fetch(`https://secret-spire-36842.herokuapp.com/orders`)
+        fetch('https://secret-spire-36842.herokuapp.com/orders?email=' + loggedInUser.email)
             .then(res => res.json())
-            .then(data => filterData(data))
+            .then(data => setOrders(data))
     }, [])
-
-    const filterData = (orders) =>
-    {
-        const filterOrder = orders.filter(order => order.email === loggedInUser.email)
-        setOrders(filterOrder);
-    }
 
     return (
         <div className="text-center">
@@ -44,7 +38,7 @@ const Orders = () =>
                                     <th scope="row">{order.email}</th>
                                     <td>{order.name}</td>
                                     <td>{order.price}</td>
-                                    <td>{order.orderTime}</td>
+                                    <td>{(new Date(order.orderTime).toString('dd/MM/yyyy'))}</td>
                                 </tr>
                             )
                         }
