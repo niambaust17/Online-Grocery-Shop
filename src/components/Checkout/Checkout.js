@@ -15,9 +15,11 @@ const Checkout = () =>
             .then(data => setProduct(data[0]))
     }, [])
 
+    const { name, price, imageURL, quantity } = product;
+
     const orderInfo = () =>
     {
-        const orderDetail = { ...loggedInUser, ...product, orderTime: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }) }
+        const orderDetail = { ...loggedInUser, name, price, imageURL, quantity, orderTime: new Date() }
 
         const url = `https://secret-spire-36842.herokuapp.com/addOrder`;
 
@@ -36,7 +38,7 @@ const Checkout = () =>
             <table className="table table-borderless">
                 <thead>
                     <tr>
-                        <th scope="col">Description</th>
+                        <th scope="col">Product Name</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Price</th>
                     </tr>

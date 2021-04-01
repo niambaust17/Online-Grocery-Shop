@@ -29,11 +29,19 @@ const ManageProduct = () =>
     }
 
     return (
-        <div className="container">
-            <div className="text-center mb-5">
-                <button className="btn btn-outline-success btn-sm mx-3"><Link style={{ color: 'orange' }} className="nav-link active" aria-current="page" to="/addProduct">Add Product</Link></button>
-            </div>
-            <div className="table-responsive{-sm|-md|-lg|-xl|-xxl}">
+        <>
+            {
+                products.length === 0 &&
+                <div className="my-2">
+                    <div className="spinner-border text-success" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            }
+            <div className="container">
+                <div className="text-center mb-5">
+                    <button className="btn btn-outline-success btn-sm mx-3"><Link style={{ color: 'orange' }} className="nav-link active" aria-current="page" to="/addProduct">Add Product</Link></button>
+                </div>
                 <table className="table table-hover">
                     <thead>
                         <tr>
@@ -47,19 +55,19 @@ const ManageProduct = () =>
                     <tbody>
                         {
                             products.map(product =>
-                                <tr>
+                                <tr key={product._id}>
                                     <th scope="row">{product.name}</th>
                                     <td>{product.quantity}</td>
                                     <td>{product.weight}</td>
                                     <td>{product.price}</td>
-                                    <td><button className="btn btn-outline-warning me-2">Edit</button><button onClick={() => deleteProduct(product._id)} className="btn btn-outline-danger">Delete</button></td>
+                                    <td className="d-flex justify-content-evenly"><button className="btn btn-outline-warning">Edit</button><button onClick={() => deleteProduct(product._id)} className="btn btn-outline-danger">Delete</button></td>
                                 </tr>
                             )
                         }
                     </tbody>
                 </table>
             </div>
-        </div>
+        </>
     );
 };
 

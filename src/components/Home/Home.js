@@ -13,13 +13,21 @@ const Home = () =>
     }, [products])
 
     return (
-        <div className="container my-5">
-            <div className="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2  g-4">
-                {
-                    products.map(product => <Products key={product._id} product={product} />)
-                }
+        <>
+            {
+                products.length === 0 &&
+                <div className="spinner-border text-success" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            }
+            <div className="container my-5">
+                <div className="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2  g-4">
+                    {
+                        products.map(product => <Products key={product._id} product={product} />)
+                    }
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

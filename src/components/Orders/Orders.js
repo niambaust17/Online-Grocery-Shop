@@ -20,8 +20,14 @@ const Orders = () =>
     }
 
     return (
-        <div className="container">
-            <div className="table-responsive{-sm|-md|-lg|-xl|-xxl}">
+        <>
+            {
+                orders.length === 0 &&
+                <div className="spinner-border text-success" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            }
+            <div className="container">
                 <table className="table table-hover">
                     <thead>
                         <tr>
@@ -34,7 +40,7 @@ const Orders = () =>
                     <tbody>
                         {
                             orders.map(order =>
-                                <tr>
+                                <tr key={order._id}>
                                     <th scope="row">{order.email}</th>
                                     <td>{order.name}</td>
                                     <td>{order.price}</td>
@@ -45,7 +51,7 @@ const Orders = () =>
                     </tbody>
                 </table>
             </div>
-        </div>
+        </>
     );
 };
 
